@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const links = [
-    { label: "Home", href: "#home" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+ const links = [
+  { label: "หน้าหลัก", href: "#home" },
+  { label: "ประวัติการศึกษา", href: "#about" },
+  { label: "ทักษะทางเทคนิค", href: "#skills" },
+  { label: "โปรเจค", href: "#projects" },
+  { label: "ติดต่อ", href: "#contact" },
   ];
 
   // ปิดเมนูเมื่อขยายเป็น desktop
