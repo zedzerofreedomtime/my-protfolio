@@ -25,7 +25,7 @@ export default function About() {
             </p>
 
             <p className="text-sm text-f1-orange mt-2">
-              2022 - ปัจจุบัน
+              2024 - ปัจจุบัน
             </p>
           </div>
         </div>
