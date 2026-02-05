@@ -35,7 +35,7 @@ export default function About() {
 
           <div className="mt-2 rounded-xl border border-white/10 bg-black/30 p-4">
             <p className="font-medium">
-              มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ
+              วิทยาลัยเทคนิคสุพรรณบุรี
             </p>
 
             <p className="text-sm text-f1-muted mt-1">
@@ -57,7 +57,7 @@ export default function About() {
 
           <div className="mt-2 rounded-xl border border-white/10 bg-black/30 p-4">
             <p className="font-medium">
-              มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ
+              วิทยาลัยเทคนิคสุพรรณบุรี
             </p>
 
             <p className="text-sm text-f1-muted mt-1">
