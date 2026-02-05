@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Cyber + F1 background pack */
+:root{
+  --bg:#070707;
+  --o:255,140,0;
+  --r:255,42,42;
+  --c:0,229,255;
+}
+
+/* GRID + scanlines + speed streak + checkered corner */
+body{
+  background-color: var(--bg);
+
+  background-image:
+    /* glow spots */
+    radial-gradient(circle at 18% 22%, rgba(var(--o),0.14), transparent 35%),
+    radial-gradient(circle at 82% 55%, rgba(var(--r),0.10), transparent 38%),
+    radial-gradient(circle at 60% 18%, rgba(var(--c),0.10), transparent 40%),
+
+    /* scanlines */
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 2px,
+      transparent 6px
+    ),
+
+    /* grid */
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+
+    /* speed streak */
+    repeating-linear-gradient(
+      120deg,
+      rgba(var(--o),0.10) 0px,
+      rgba(var(--o),0.10) 2px,
+      transparent 3px,
+      transparent 18px
+    );
+
+  background-size:
+    auto, auto, auto,
+    auto,
+    26px 26px,
+    26px 26px,
+    auto;
+
+  background-position:
+    center, center, center,
+    center,
+    center,
+    center,
+    -40px 0;
+
+  color: #eaeaea;
+}
+
+/* HUD corner checkered */
+.hud-checker{
+  position: relative;
+}
+.hud-checker:before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 24px;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(var(--o),0.35), transparent 40%),
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255,255,255,0.18) 0 25%,
+      rgba(0,0,0,0.18) 0 50%
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+  opacity: .35;
+}
+
+/* little glitch text */
+.glitch{
+  text-shadow:
+    0 0 18px rgba(var(--o),0.35),
+    2px 0 0 rgba(var(--c),0.25),
+    -2px 0 0 rgba(var(--r),0.20);
+}
+
+/* --- Burger icon --- */
+.burger {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.burger-lines {
+  width: 18px;
+  height: 14px;
+  position: relative;
+}
+
+.burger-lines span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: #0b0b0b; /* สีเส้นในปุ่มขาว */
+  transition: transform .18s ease, top .18s ease, opacity .18s ease;
+}
+
+.burger-lines span:nth-child(1) { top: 0; }
+.burger-lines span:nth-child(2) { top: 6px; }
+.burger-lines span:nth-child(3) { top: 12px; }
+
+/* เมื่อเปิดเมนู: เปลี่ยนเป็น X */
+.burger.is-open .burger-lines span:nth-child(1) { top: 6px; transform: rotate(45deg); }
+.burger.is-open .burger-lines span:nth-child(2) { opacity: 0; }
+.burger.is-open .burger-lines span:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+
+/* HUD card helper */
+.hud-card{
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.45);
+  overflow: hidden;
+}
+
+.hud-card:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,140,0,0.14), transparent 45%),
+    radial-gradient(circle at 80% 60%, rgba(255,42,42,0.10), transparent 48%),
+    linear-gradient(to bottom, rgba(255,255,255,0.05), transparent 45%);
+  opacity: .8;
+  pointer-events:none;
+}
+
+.hud-card:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(255,140,0,0.10);
+  pointer-events:none;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0b0b0b;
+  color: rgba(255,255,255,0.88);
+}
+
+/* เส้นส้มบางๆ แบบ F1 lane */
+.f1-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,140,0,0.8), transparent);
+}
+
+/* เช็คเกอร์มุมเล็กๆ (ไม่รก) */
+.f1-checker {
+  position: relative;
+}
+.f1-checker::after{
+  content:"";
+  position:absolute;
+  right: 14px;
+  top: 14px;
+  width: 34px;
+  height: 18px;
+  opacity: .18;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255,255,255,0.9) 0 25%,
+      rgba(0,0,0,0.9) 0 50%
+    );
+  background-size: 12px 12px;
+  border-radius: 6px;
+  pointer-events:none;
+}
+
+
