@@ -1,26 +1,25 @@
+import { useMemo, useState } from "react";
+import SectionHeading from "./SectionHeading";
+
+const filters = ["All", "Web", "Frontend", "Responsive", "PHP"];
+
 const projects = [
   {
     name: "Safezone Town Website",
-    role: "Frontend / UI",
+    category: "Web",
+    tags: ["Frontend", "Responsive", "PHP"],
     desc: "เว็บไซต์รวบรวมข้อมูลเมือง Roleplay พร้อมโครงสร้างเมนูที่ช่วยให้ผู้ใช้เข้าถึงกฎและข้อมูลสำคัญได้ง่าย",
-    highlights: [
-      "จัดหมวดหมู่ข้อมูลจำนวนมากให้สแกนง่าย",
-      "พัฒนา Dropdown และ Toggle Menu สำหรับมือถือ",
-      "ออกแบบ UI แนว Cyber / Futuristic ให้เข้ากับคอนเซ็ปต์เมือง",
-    ],
-    tech: ["HTML", "CSS", "JS", "PHP"],
+    highlights: ["Dropdown / Toggle Menu", "Cyber UI Theme", "Mobile-first Layout"],
+    tech: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://safezoneee.netlify.app/",
   },
   {
     name: "Saber Town Website",
-    role: "Web Design / Responsive Layout",
+    category: "Web",
+    tags: ["Frontend", "Responsive", "PHP"],
     desc: "เว็บไซต์ข้อมูลเมือง Saber Town ที่ออกแบบให้ผู้เล่นค้นหากฎ เมนู และรายละเอียดต่าง ๆ ได้สะดวก",
-    highlights: [
-      "วางโครงสร้างเนื้อหาให้เหมาะกับข้อมูลหลายหมวด",
-      "ออกแบบหน้าตาให้ใช้งานง่ายทั้ง Desktop และ Mobile",
-      "ปรับรายละเอียด UI ให้เข้ากับบรรยากาศเกม Roleplay",
-    ],
-    tech: ["HTML", "CSS", "JS", "PHP"],
+    highlights: ["Structured Content", "Responsive Sections", "Roleplay Visual Style"],
+    tech: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://saber-town.netlify.app/",
   },
 ];
@@ -41,61 +40,79 @@ function IconExternalLink(props) {
 }
 
 export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const visibleProjects = useMemo(() => {
+    if (activeFilter === "All") return projects;
+    return projects.filter((project) => project.category === activeFilter || project.tags.includes(activeFilter));
+  }, [activeFilter]);
+
   return (
-    <section id="projects" className="py-12">
-      <div className="f1-divider mb-6" />
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h2 className="text-2xl font-semibold">โปรเจกต์</h2>
-          <p className="mt-2 text-sm text-f1-muted">ผลงานเว็บไซต์ที่ออกแบบและพัฒนาเพื่อใช้งานจริง</p>
+    <section id="projects" className="portfolio-section">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHeading label="03" title="PROJECT">
+          ผลงานเว็บไซต์ที่ออกแบบและพัฒนาเพื่อใช้งานจริง พร้อมรายละเอียดบทบาท เทคโนโลยี และลิงก์สำหรับทดลองใช้งาน
+        </SectionHeading>
+
+        <div className="mt-10 flex flex-wrap gap-3">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              className={activeFilter === filter ? "filter-chip filter-chip--active" : "filter-chip"}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
-      </div>
 
-      <div className="mt-6 grid gap-4">
-        {projects.map((p) => (
-          <article key={p.name} className="rounded-lg border border-white/10 bg-f1-panel p-5 transition hover:border-f1-orange/50">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wide text-f1-orange">{p.role}</p>
-                <h3 className="mt-1 text-lg font-semibold">{p.name}</h3>
+        <div className="mt-10 space-y-5">
+          {visibleProjects.map((project, index) => (
+            <article key={project.name} className="project-row">
+              <div className="project-number">{String(index + 1).padStart(2, "0")}</div>
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-3">
+                  <p className="text-xs uppercase tracking-[0.22em] text-f1-orange">{project.category}</p>
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="project-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-                <p className="mt-2 max-w-3xl text-sm leading-relaxed text-f1-muted">
-                  {p.desc}
-                </p>
+                <h3 className="mt-4 text-2xl font-semibold text-white md:text-4xl">{project.name}</h3>
+                <p className="mt-4 max-w-3xl leading-8 text-white/58">{project.desc}</p>
+
+                <div className="mt-6 grid gap-3 md:grid-cols-3">
+                  {project.highlights.map((item) => (
+                    <div key={item} className="project-highlight">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="tech-pill">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               <a
-                href={p.link}
+                href={project.link}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-f1-orange/35 px-3 py-2 text-sm font-medium text-f1-orange transition hover:border-f1-orange hover:bg-f1-orange/10"
-                aria-label={`เปิดเว็บไซต์ ${p.name}`}
+                className="project-link"
+                aria-label={`เปิดเว็บไซต์ ${project.name}`}
               >
-                เปิดเว็บไซต์
                 <IconExternalLink />
               </a>
-            </div>
-
-            <ul className="mt-4 grid gap-2 text-sm text-f1-muted sm:grid-cols-3">
-              {p.highlights.map((item) => (
-                <li key={item} className="rounded-lg border border-white/10 bg-black/20 p-3">
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-f1-orange/25 bg-f1-orange/10 px-2 py-1 text-xs text-f1-orange"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

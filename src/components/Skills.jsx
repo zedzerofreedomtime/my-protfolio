@@ -1,30 +1,37 @@
+import SectionHeading from "./SectionHeading";
+
 const skills = [
-  { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "React"] },
-  { title: "UI / Styling", items: ["Tailwind CSS", "MUI", "Responsive Design", "UI/UX Basics"] },
-  { title: "Backend / Database", items: ["PHP", "MySQL"] },
-  { title: "Tools", items: ["GitHub", "VS Code", "Netlify"] },
+  { title: "HTML / CSS", type: "Frontend", level: 5 },
+  { title: "JavaScript", type: "Frontend", level: 4 },
+  { title: "React", type: "Frontend", level: 4 },
+  { title: "Tailwind CSS", type: "Styling", level: 4 },
+  { title: "MUI", type: "UI Library", level: 3 },
+  { title: "PHP", type: "Backend", level: 3 },
+  { title: "MySQL", type: "Database", level: 3 },
+  { title: "GitHub / Netlify", type: "Tools", level: 4 },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-12">
-      <div className="f1-divider mb-6" />
-      <h2 className="text-2xl font-semibold">ทักษะทางเทคนิค</h2>
+    <section id="skills" className="portfolio-section portfolio-section--compact">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <SectionHeading label="02" title="SKILLS">
+          เครื่องมือและทักษะที่ใช้สร้างเว็บจริง ตั้งแต่โครงสร้างหน้าเว็บไปจนถึงการจัดวางและ deploy
+        </SectionHeading>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {skills.map((s) => (
-          <div key={s.title} className="rounded-lg border border-white/10 bg-f1-panel p-5">
-            <h3 className="font-medium text-f1-orange">{s.title}</h3>
-            <ul className="mt-3 space-y-2 text-sm text-f1-muted">
-              {s.items.map((it) => (
-                <li key={it} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-f1-orange" />
-                  {it}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {skills.map((skill) => (
+            <article key={skill.title} className="skill-card">
+              <p className="text-xs uppercase tracking-[0.22em] text-white/35">{skill.type}</p>
+              <h3 className="mt-3 text-xl font-semibold">{skill.title}</h3>
+              <div className="mt-7 flex gap-2" aria-label={`${skill.level} out of 5`}>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <span key={index} className={index < skill.level ? "skill-dot skill-dot--active" : "skill-dot"} />
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

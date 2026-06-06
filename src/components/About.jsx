@@ -1,53 +1,70 @@
+import SectionHeading from "./SectionHeading";
+
 const education = [
   {
-    school: "มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ ศูนย์สุพรรณบุรี",
-    degree: "คณะวิทยาศาสตร์และเทคโนโลยี",
-    major: "สาขาเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล",
-    period: "2024 - ปัจจุบัน",
+    level: "Bachelor Degree",
+    school: "Rajamangala University of Technology Suvarnabhumi",
+    detail: "สาขาเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล",
+    period: "2024 - Present",
   },
   {
-    school: "วิทยาลัยเทคนิคสุพรรณบุรี",
-    degree: "ประกาศนียบัตรวิชาชีพชั้นสูง",
-    major: "สาขาเทคโนโลยีคอมพิวเตอร์ งานคอมพิวเตอร์ฮาร์ดแวร์",
+    level: "High Vocational Certificate",
+    school: "Suphanburi Technical College",
+    detail: "สาขาเทคโนโลยีคอมพิวเตอร์ งานคอมพิวเตอร์ฮาร์ดแวร์",
     period: "2022 - 2024",
   },
   {
-    school: "วิทยาลัยเทคนิคสุพรรณบุรี",
-    degree: "ประกาศนียบัตรวิชาชีพ",
-    major: "สาขาช่างเทคนิคคอมพิวเตอร์",
+    level: "Vocational Certificate",
+    school: "Suphanburi Technical College",
+    detail: "สาขาช่างเทคนิคคอมพิวเตอร์",
     period: "2019 - 2022",
   },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="pt-8 pb-12 sm:py-12">
-      <div className="f1-divider mb-6" />
+    <section id="about" className="portfolio-section">
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
+        <SectionHeading label="01" title="ABOUT ME">
+          ผมชอบสร้างหน้าเว็บที่ใช้งานได้จริง จัดข้อมูลให้เข้าใจง่าย และปรับประสบการณ์ใช้งานให้เหมาะกับผู้ใช้บนหลายอุปกรณ์
+        </SectionHeading>
 
-      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <h2 className="text-2xl font-semibold">เกี่ยวกับผม</h2>
-          <p className="mt-4 leading-relaxed text-f1-muted">
-            ผมชอบสร้างหน้าเว็บที่ใช้งานได้จริง จัดข้อมูลให้เข้าใจง่าย และพัฒนา UI ให้ดูสะอาดบนหลายขนาดหน้าจอ
-            เป้าหมายตอนนี้คือเติบโตในสาย Frontend Development พร้อมต่อยอดทักษะด้าน UI/UX และ Performance
-          </p>
-        </div>
+        <div className="space-y-10">
+          <div className="about-panel">
+            <p className="text-lg leading-9 text-white/70">
+              เป้าหมายของผมคือการเติบโตในสาย Frontend Development พร้อมต่อยอดความเข้าใจด้าน UI/UX,
+              Performance และการทำงานร่วมกับทีมพัฒนา เพื่อสร้างเว็บที่ทั้งสวย ใช้งานง่าย และดูแลต่อได้จริง
+            </p>
 
-        <div className="rounded-lg border border-white/10 bg-f1-panel p-5">
-          <h3 className="text-lg font-semibold">ประวัติการศึกษา</h3>
-          <div className="mt-4 space-y-4">
-            {education.map((item) => (
-              <article key={`${item.school}-${item.period}`} className="rounded-lg border border-white/10 bg-black/25 p-4">
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <h4 className="font-medium">{item.school}</h4>
-                    <p className="mt-1 text-sm text-f1-muted">{item.degree}</p>
-                    <p className="text-sm text-f1-muted">{item.major}</p>
-                  </div>
-                  <p className="shrink-0 text-sm font-medium text-f1-orange">{item.period}</p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {["Responsive UI", "Clean Layout", "Real Projects"].map((item) => (
+                <div key={item} className="mini-stat">
+                  <span />
+                  {item}
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          <div className="timeline-wrap">
+            <div className="timeline-heading">
+              <span>EDUCATION</span>
+              <span>03 records</span>
+            </div>
+
+            <div className="space-y-5">
+              {education.map((item, index) => (
+                <article key={`${item.school}-${item.period}`} className="timeline-item">
+                  <div className="timeline-index">{String(index + 1).padStart(2, "0")}</div>
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-f1-orange">{item.level}</p>
+                    <h3 className="mt-2 text-xl font-semibold text-white">{item.school}</h3>
+                    <p className="mt-2 leading-7 text-white/55">{item.detail}</p>
+                  </div>
+                  <p className="timeline-period">{item.period}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>
