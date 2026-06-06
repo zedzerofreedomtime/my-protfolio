@@ -36,20 +36,44 @@ function IconInstagram(props) {
   );
 }
 
-function ContactItem({ label, href, text, Icon }) {
+function IconResume(props) {
   return (
-    <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        d="M6 2h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V7h3.5L13 3.5zM7 11v2h8v-2H7zm0 4v2h8v-2H7z"
+      />
+    </svg>
+  );
+}
+
+function IconMail(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.2-8 5-8-5V6l8 5 8-5v2.2z"
+      />
+    </svg>
+  );
+}
+
+function ContactItem({ label, href, text, renderIcon }) {
+  const isExternal = href.startsWith("http") || href.startsWith("/");
+
+  return (
+    <div className="rounded-lg border border-white/10 bg-black/20 p-4">
       <p className="text-sm text-f1-muted">{label}</p>
       <a
-        className="mt-2 inline-flex items-center gap-2 font-medium text-f1-text hover:text-f1-orange transition"
+        className="mt-2 inline-flex items-center gap-2 font-medium text-f1-text transition hover:text-f1-orange"
         href={href}
-        target="_blank"
-        rel="noreferrer"
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noreferrer" : undefined}
       >
-        <span className="grid place-items-center w-8 h-8 rounded-lg border border-white/10 bg-white/5 text-f1-orange">
-          <Icon />
+        <span className="grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/5 text-f1-orange">
+          {renderIcon()}
         </span>
-        <span className="hover:underline underline-offset-4">{text}</span>
+        <span className="break-all underline-offset-4 hover:underline">{text}</span>
       </a>
     </div>
   );
@@ -59,49 +83,46 @@ export default function Contact() {
   return (
     <section id="contact" className="py-12">
       <div className="f1-divider mb-6" />
-      <h2 className="text-xl font-semibold">ติดต่อ</h2>
+      <h2 className="text-2xl font-semibold">ติดต่อ</h2>
+      <p className="mt-2 text-sm text-f1-muted">
+        พร้อมพูดคุยเรื่องฝึกงาน โปรเจกต์ Frontend หรือโอกาสพัฒนางานเว็บ
+      </p>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-f1-panel p-5">
+      <div className="mt-6 rounded-lg border border-white/10 bg-f1-panel p-5">
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-xl border border-white/10 bg-black/20 p-4">
-            <p className="text-sm text-f1-muted">Email</p>
-            <a
-              className="mt-2 inline-flex items-center gap-2 font-medium text-f1-text hover:text-f1-orange transition"
-              href="mailto:friendzzaa09@gmail.com"
-            >
-              <span className="grid place-items-center w-8 h-8 rounded-lg border border-white/10 bg-white/5 text-f1-orange">
-                {/* mail icon */}
-                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                  <path
-                    fill="currentColor"
-                    d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.2-8 5-8-5V6l8 5 8-5v2.2z"
-                  />
-                </svg>
-              </span>
-              <span className="hover:underline underline-offset-4">friendzzaa09@gmail.com</span>
-            </a>
-          </div>
+          <ContactItem
+            label="Email"
+            href="mailto:friendzzaa09@gmail.com"
+            text="friendzzaa09@gmail.com"
+            renderIcon={IconMail}
+          />
 
           <ContactItem
             label="GitHub"
             href="https://github.com/zedzerofreedomtime"
             text="zedzerofreedomtime"
-            Icon={IconGitHub}
+            renderIcon={IconGitHub}
           />
 
-          {/* แก้ลิงก์เป็นของนาย */}
+          <ContactItem
+            label="Resume"
+            href="/resume-methasit-sangwaree.pdf"
+            text="เปิดไฟล์ Resume"
+            renderIcon={IconResume}
+          />
+
           <ContactItem
             label="Facebook"
             href="https://www.facebook.com/methasit.sangwaree/?locale=th_TH"
             text="เมธาสิทธิ์ สังข์วารี"
-            Icon={IconFacebook}
+            renderIcon={IconFacebook}
           />
 
           <ContactItem
             label="Instagram"
             href="https://www.instagram.com/friend_zed/"
             text="@friend_zed"
-            Icon={IconInstagram}
+            renderIcon={IconInstagram}
           />
         </div>
       </div>

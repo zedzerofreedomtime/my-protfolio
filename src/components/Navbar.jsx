@@ -1,26 +1,24 @@
 import { useEffect, useState } from "react";
 
+const links = [
+  { label: "หน้าหลัก", href: "#home" },
+  { label: "เกี่ยวกับ", href: "#about" },
+  { label: "ทักษะ", href: "#skills" },
+  { label: "โปรเจกต์", href: "#projects" },
+  { label: "ติดต่อ", href: "#contact" },
+];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
- const links = [
-  { label: "หน้าหลัก", href: "#home" },
-  { label: "ประวัติการศึกษา", href: "#about" },
-  { label: "ทักษะทางเทคนิค", href: "#skills" },
-  { label: "โปรเจค", href: "#projects" },
-  { label: "ติดต่อ", href: "#contact" },
-  ];
-
-  // ปิดเมนูเมื่อขยายเป็น desktop
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setOpen(false); // md = 768px
+      if (window.innerWidth >= 768) setOpen(false);
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // ปิดเมนูเมื่อกด ESC
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === "Escape") setOpen(false);
@@ -31,28 +29,26 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-f1-bg/80 backdrop-blur">
-      <div className="mx-auto max-w-4xl px-4 py-3 flex items-center justify-between">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
         <a
           href="#home"
           onClick={() => setOpen(false)}
           className="font-semibold tracking-wide text-f1-text"
         >
-          My<span className="text-f1-orange">Portfolio</span>
+          Methasit<span className="text-f1-orange">.dev</span>
         </a>
 
-        {/* Desktop menu */}
-        <nav className="hidden md:flex gap-5 text-sm text-f1-muted">
+        <nav className="hidden gap-5 text-sm text-f1-muted md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-f1-orange transition">
+            <a key={l.href} href={l.href} className="transition hover:text-f1-orange">
               {l.label}
             </a>
           ))}
         </nav>
 
-        {/* Burger button (mobile) */}
         <button
           type="button"
-          aria-label="Open menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
           className={[
@@ -69,21 +65,20 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={[
-          "md:hidden overflow-hidden transition-all duration-200",
+          "overflow-hidden transition-all duration-200 md:hidden",
           open ? "max-h-72" : "max-h-0",
         ].join(" ")}
       >
-        <div className="mx-auto max-w-4xl px-4 pb-4">
-          <div className="rounded-2xl border border-white/10 bg-f1-panel">
+        <div className="mx-auto max-w-5xl px-4 pb-4 sm:px-6">
+          <div className="rounded-lg border border-white/10 bg-f1-panel">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block px-4 py-3 text-sm text-f1-muted hover:text-f1-orange hover:bg-white/5 transition"
+                className="block px-4 py-3 text-sm text-f1-muted transition hover:bg-white/5 hover:text-f1-orange"
               >
                 {l.label}
               </a>
