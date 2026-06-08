@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 const links = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "Profile", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Project", href: "#projects" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -30,11 +30,7 @@ export default function Navbar() {
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-black/40 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a
-          href="#home"
-          onClick={() => setOpen(false)}
-          className="signature-logo text-2xl text-f1-text"
-        >
+        <a href="#home" onClick={() => setOpen(false)} className="signature-logo text-2xl text-f1-text">
           Methasit<span className="text-f1-orange">.</span>
         </a>
 

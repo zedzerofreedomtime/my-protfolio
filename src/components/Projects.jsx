@@ -1,26 +1,76 @@
 import { useMemo, useState } from "react";
 import SectionHeading from "./SectionHeading";
 
-const filters = ["All", "Web", "Frontend", "Responsive", "PHP"];
+const filters = ["All", "Full-Stack", "AI", "Dashboard", "Frontend", "Backend"];
 
 const projects = [
   {
+    name: "Shadow CEO",
+    subtitle: "Ecosystem Manager - ระบบผู้ช่วยวิเคราะห์การเติบโตธุรกิจด้วย AI",
+    category: "Full-Stack",
+    tags: ["AI", "Dashboard", "Backend"],
+    desc: "แพลตฟอร์มสำหรับช่วยเจ้าของธุรกิจ SME วิเคราะห์ข้อมูลจาก Facebook Page และสรุปข้อมูลเชิงธุรกิจด้วย AI เพื่อช่วยตัดสินใจด้านการตลาดและการขายได้ง่ายขึ้น",
+    highlights: [
+      "React Dashboard สำหรับคะแนนสุขภาพเพจ สรุปโพสต์ และผลวิเคราะห์",
+      "Go + Gin API เชื่อม Frontend, Database, AI, LINE และ Meta Graph API",
+      "PostgreSQL + Redis สำหรับจัดเก็บข้อมูลธุรกิจและรองรับงานที่ต้องการความเร็ว",
+      "Gemini API สำหรับ Daily Growth Brief และคำแนะนำที่เข้าใจง่าย",
+      "LINE Messaging API สำหรับส่งสรุปรายวันและแจ้งเตือนผู้ใช้งาน",
+      "Admin Dashboard ตรวจสอบ Log และสถานะบริการสำคัญ",
+    ],
+    tech: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Axios",
+      "Go",
+      "Gin",
+      "PostgreSQL",
+      "Redis",
+      "LINE API",
+      "Meta Graph API",
+      "Gemini API",
+    ],
+    githubLink: "https://github.com/zedzerofreedomtime/shadow-ceo2",
+  },
+  {
+    name: "AutoNexus",
+    subtitle: "ระบบแพลตฟอร์มซื้อขายรถยนต์ออนไลน์",
+    category: "Full-Stack",
+    tags: ["Frontend", "Backend", "Dashboard"],
+    desc: "แพลตฟอร์มซื้อขายรถยนต์ออนไลน์ รองรับการค้นหา เปรียบเทียบ ดูรายละเอียด ติดต่อซื้อขาย นัดหมายทดลองขับ และส่งคำขอสินเชื่อผ่านระบบ",
+    highlights: [
+      "Next.js + React + TypeScript สำหรับหน้าค้นหาและรายละเอียดรถยนต์",
+      "Tailwind CSS รองรับการใช้งานทั้ง Desktop และ Mobile",
+      "Go + Gin API จัดการผู้ใช้ รถยนต์ รายการโปรด และคำขอต่าง ๆ",
+      "ระบบสมาชิก สมัครสมาชิก เข้าสู่ระบบ และจัดการโปรไฟล์",
+      "Favorites สำหรับบันทึกรถยนต์ที่สนใจกลับมาดูภายหลัง",
+      "Handler / Service / Repository architecture เพื่อขยายระบบต่อได้ง่าย",
+    ],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Axios", "Go", "Gin", "PostgreSQL", "Redis"],
+    githubLink: "https://github.com/zedzerofreedomtime/ZedSellAuto",
+  },
+  {
     name: "Safezone Town Website",
-    category: "Web",
-    tags: ["Frontend", "Responsive", "PHP"],
+    subtitle: "Roleplay community website",
+    category: "Frontend",
+    tags: ["Frontend"],
     desc: "เว็บไซต์รวบรวมข้อมูลเมือง Roleplay พร้อมโครงสร้างเมนูที่ช่วยให้ผู้ใช้เข้าถึงกฎและข้อมูลสำคัญได้ง่าย",
     highlights: ["Dropdown / Toggle Menu", "Cyber UI Theme", "Mobile-first Layout"],
     tech: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://safezoneee.netlify.app/",
+    githubLink: "https://github.com/zedzerofreedomtime/safezone",
   },
   {
     name: "Saber Town Website",
-    category: "Web",
-    tags: ["Frontend", "Responsive", "PHP"],
-    desc: "เว็บไซต์ข้อมูลเมือง Saber Town ที่ออกแบบให้ผู้เล่นค้นหากฎ เมนู และรายละเอียดต่าง ๆ ได้สะดวก",
+    subtitle: "Responsive information website",
+    category: "Frontend",
+    tags: ["Frontend"],
+    desc: "เว็บไซต์ข้อมูลเมือง Saber Town ที่ออกแบบให้ผู้เล่นค้นหากฎ เมนู และรายละเอียดต่าง ๆ ได้สะดวกบนหลายขนาดหน้าจอ",
     highlights: ["Structured Content", "Responsive Sections", "Roleplay Visual Style"],
     tech: ["HTML", "CSS", "JavaScript", "PHP"],
     link: "https://saber-town.netlify.app/",
+    githubLink: "https://github.com/zedzerofreedomtime/saber_Tonw",
   },
 ];
 
@@ -39,6 +89,17 @@ function IconExternalLink(props) {
   );
 }
 
+function IconGitHub(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" {...props}>
+      <path
+        fill="currentColor"
+        d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.01-.32 3.3 1.23.95a11.5 11.5 0 0 1 6.54 0c2.22-1.51 3.22-1.23 3.22-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"
+      />
+    </svg>
+  );
+}
+
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -50,8 +111,9 @@ export default function Projects() {
   return (
     <section id="projects" className="portfolio-section">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading label="03" title="PROJECT">
-          ผลงานเว็บไซต์ที่ออกแบบและพัฒนาเพื่อใช้งานจริง พร้อมรายละเอียดบทบาท เทคโนโลยี และลิงก์สำหรับทดลองใช้งาน
+        <SectionHeading label="03" title="PROJECTS">
+          ผลงานโครงงานและเว็บไซต์ที่ออกแบบ พัฒนา และเชื่อมระบบให้ใช้งานได้จริง
+          ครอบคลุมทั้ง Frontend, Backend, Database, AI Service และ Integration ภายนอก
         </SectionHeading>
 
         <div className="mt-10 flex flex-wrap gap-3">
@@ -82,9 +144,12 @@ export default function Projects() {
                 </div>
 
                 <h3 className="mt-4 text-2xl font-semibold text-white md:text-4xl">{project.name}</h3>
+                <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-white/35">
+                  {project.subtitle}
+                </p>
                 <p className="mt-4 max-w-3xl leading-8 text-white/58">{project.desc}</p>
 
-                <div className="mt-6 grid gap-3 md:grid-cols-3">
+                <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                   {project.highlights.map((item) => (
                     <div key={item} className="project-highlight">
                       {item}
@@ -101,15 +166,31 @@ export default function Projects() {
                 </div>
               </div>
 
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="project-link"
-                aria-label={`เปิดเว็บไซต์ ${project.name}`}
-              >
-                <IconExternalLink />
-              </a>
+              <div className="project-actions">
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-action"
+                    aria-label={`เปิดเว็บไซต์ ${project.name}`}
+                  >
+                    <IconExternalLink />
+                    <span>เข้าชมเว็บไซต์</span>
+                  </a>
+                ) : null}
+
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-action project-action--github"
+                  aria-label={`เข้าชมบน GitHub ${project.name}`}
+                >
+                  <IconGitHub />
+                  <span>เข้าชมบน GitHub</span>
+                </a>
+              </div>
             </article>
           ))}
         </div>
