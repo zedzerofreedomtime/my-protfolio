@@ -802,8 +802,8 @@ body::before {
 .project-case__screens {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(220px, 0.48fr) minmax(0, 1fr);
-  align-items: center;
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 0.62fr);
+  align-items: start;
   gap: clamp(1.15rem, 3vw, 2rem);
   min-height: 340px;
   overflow: hidden;
@@ -839,15 +839,16 @@ body::before {
 
 .project-shot--gallery {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
   gap: clamp(0.55rem, 1.2vw, 0.8rem);
 }
 
 .project-gallery__item {
   position: relative;
-  grid-column: span 2;
+  grid-column: span 1;
   align-self: start;
+  aspect-ratio: 16 / 10;
   min-width: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -860,14 +861,14 @@ body::before {
 }
 
 .project-gallery__item--hero {
-  grid-column: span 4;
+  grid-column: 1 / -1;
   grid-row: span 1;
 }
 
 .project-gallery__item img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   filter: saturate(0.96) contrast(1.03);
@@ -1389,7 +1390,7 @@ body::before {
   }
 
   .project-gallery__item img {
-    height: auto;
+    height: 100%;
   }
 }
 
