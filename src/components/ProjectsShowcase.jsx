@@ -15,6 +15,13 @@ const projects = [
     screensCopy:
       "รูปหน้าจอจริงจากโปรเจค PC Shop ใน repository ของนาย แสดง flow หน้าร้าน สินค้า ตะกร้า checkout และการติดตามคำสั่งซื้อ",
     image: "/project-pcshop-storefront.png",
+    images: [
+      "/project-pcshop-01.png",
+      "/project-pcshop-02.png",
+      "/project-pcshop-03.png",
+      "/project-pcshop-04.png",
+      "/project-pcshop-05.png",
+    ],
   },
   {
     name: "InvoiceMini",
@@ -30,6 +37,13 @@ const projects = [
     screensCopy:
       "ภาพจริงจากหน้า Dashboard ของ InvoiceMini แสดงยอดรายได้ เอกสารล่าสุด กราฟรายเดือน และเมนูจัดการเอกสารธุรกิจ",
     image: "/project-invoicemini-real.png",
+    images: [
+      "/project-invoicemini-01.png",
+      "/project-invoicemini-02.png",
+      "/project-invoicemini-03.png",
+      "/project-invoicemini-04.png",
+      "/project-invoicemini-05.png",
+    ],
   },
   {
     name: "Ecosystem Manager",
@@ -45,6 +59,13 @@ const projects = [
     screensCopy:
       "ภาพจริงจากหน้า Dashboard ของ Ecosystem Manager แสดง performance summary, KPI, inbox signal และ daily growth brief",
     image: "/project-ecosystem-real.png",
+    images: [
+      "/project-ecosystem-01.png",
+      "/project-ecosystem-02.png",
+      "/project-ecosystem-03.png",
+      "/project-ecosystem-04.png",
+      "/project-ecosystem-05.png",
+    ],
   },
   {
     name: "AutoNexus",
@@ -60,6 +81,13 @@ const projects = [
     screensCopy:
       "ภาพจริงจากหน้า marketplace ของ AutoNexus แสดงหมวดหมู่รถ ตัวกรอง และรายการรถพร้อมรูปจากระบบ",
     image: "/project-autonexus-real.png",
+    images: [
+      "/project-autonexus-01.png",
+      "/project-autonexus-02.png",
+      "/project-autonexus-03.png",
+      "/project-autonexus-04.png",
+      "/project-autonexus-05.png",
+    ],
   },
   {
     name: "Safezone Town Website",
@@ -76,6 +104,13 @@ const projects = [
     screensCopy:
       "ภาพจริงจากหน้าเว็บไซต์ Safezone Town แสดงโทนสี เมนูหลัก และเนื้อหากฎของเมืองจากไฟล์โปรเจคจริง",
     image: "/project-safezone-real.png",
+    images: [
+      "/project-safezone-01.png",
+      "/project-safezone-02.png",
+      "/project-safezone-03.png",
+      "/project-safezone-04.png",
+      "/project-safezone-05.png",
+    ],
   },
   {
     name: "Saber Town Website",
@@ -92,6 +127,13 @@ const projects = [
     screensCopy:
       "ภาพจริงจากหน้าเว็บไซต์ Saber Town แสดงหน้าแรก โลโก้ เมนู และสไตล์ neon community ของโปรเจคจริง",
     image: "/project-saber-real.png",
+    images: [
+      "/project-saber-01.png",
+      "/project-saber-02.png",
+      "/project-saber-03.png",
+      "/project-saber-04.png",
+      "/project-saber-05.png",
+    ],
   },
 ];
 
@@ -184,10 +226,24 @@ export default function ProjectsShowcase() {
 }
 
 function ProjectPreview({ project }) {
-  if (project.image) {
+  const images = project.images ?? (project.image ? [project.image] : []);
+
+  if (images.length > 0) {
     return (
-      <div className="project-shot project-shot--image">
-        <img src={project.image} alt={`${project.name} project screens`} />
+      <div className="project-shot project-shot--gallery">
+        {images.map((image, imageIndex) => (
+          <figure
+            key={image}
+            className={
+              imageIndex === 0
+                ? "project-gallery__item project-gallery__item--hero"
+                : "project-gallery__item"
+            }
+          >
+            <img src={image} alt={`${project.name} screen ${imageIndex + 1}`} loading="lazy" />
+            <figcaption>{String(imageIndex + 1).padStart(2, "0")}</figcaption>
+          </figure>
+        ))}
       </div>
     );
   }
