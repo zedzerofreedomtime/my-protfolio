@@ -10,7 +10,7 @@ const education = [
   {
     level: "ประกาศนียบัตรวิชาชีพชั้นสูง",
     school: "วิทยาลัยเทคนิคสุพรรณบุรี",
-    detail: "สาขาคอมพิวเตอร์กราฟิก",
+    detail: "สาขาเทคโนโลยีคอมพิวเตอร์",
     period: "2022 - 2024",
   },
   {
@@ -26,7 +26,7 @@ export default function About() {
     <section id="about" className="portfolio-section">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
         <SectionHeading label="01" title="EDUCATION">
-          ประวัติการศึกษาของผม ตั้งแต่สายเทคนิคคอมพิวเตอร์และคอมพิวเตอร์กราฟิก
+          ประวัติการศึกษาของผม ตั้งแต่สายเทคนิคคอมพิวเตอร์และเทคโนโลยีคอมพิวเตอร์
           จนถึงปัจจุบันที่กำลังศึกษาด้านเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล
         </SectionHeading>
 
