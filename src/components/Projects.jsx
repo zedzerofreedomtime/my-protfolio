@@ -5,8 +5,8 @@ const filters = ["All", "Full-Stack", "AI", "Dashboard", "Frontend", "Backend"];
 
 const projects = [
   {
-    name: "Shadow CEO",
-    subtitle: "Ecosystem Manager - ระบบผู้ช่วยวิเคราะห์การเติบโตธุรกิจด้วย AI",
+    name: "Ecosystem Manager",
+    subtitle: "ระบบผู้ช่วยวิเคราะห์การเติบโตธุรกิจด้วย AI",
     category: "Full-Stack",
     tags: ["AI", "Dashboard", "Backend"],
     desc: "แพลตฟอร์มสำหรับช่วยเจ้าของธุรกิจ SME วิเคราะห์ข้อมูลจาก Facebook Page และสรุปข้อมูลเชิงธุรกิจด้วย AI เพื่อช่วยตัดสินใจด้านการตลาดและการขายได้ง่ายขึ้น",
@@ -31,7 +31,7 @@ const projects = [
       "Meta Graph API",
       "Gemini API",
     ],
-    githubLink: "https://github.com/zedzerofreedomtime/shadow-ceo2",
+    githubLink: "https://github.com/fulltank-garage/shadow-ceo",
   },
   {
     name: "AutoNexus",
