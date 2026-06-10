@@ -1,7 +1,7 @@
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
-import Projects from "./components/Projects";
+import ProjectsShowcase from "./components/ProjectsShowcase";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -17,7 +17,7 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
-        <Projects />
+        <ProjectsShowcase />
         <Contact />
       </main>
       <Footer />
