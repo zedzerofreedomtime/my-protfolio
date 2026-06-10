@@ -30,25 +30,7 @@ export default function About() {
           จนถึงปัจจุบันที่กำลังศึกษาด้านเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล
         </SectionHeading>
 
-        <div className="space-y-10">
-          <div className="about-panel">
-            <p className="text-lg leading-9 text-white/70">
-              ปัจจุบันผมกำลังพัฒนาทักษะทั้ง Front-End และ Back-End อย่างต่อเนื่อง
-              เพื่อสร้างผลงานที่ตอบโจทย์ผู้ใช้งานได้ครบทั้งระบบ ผมให้ความสำคัญกับหน้าเว็บที่สวย
-              ใช้งานง่าย รองรับหลายอุปกรณ์ และระบบหลังบ้านที่มีโครงสร้างชัดเจน เชื่อมต่อ API,
-              Database, AI Service และ Third-party Integration ได้จริง
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {["UX/UI Design", "Back-End API", "System Integration"].map((item) => (
-                <div key={item} className="mini-stat">
-                  <span />
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-
+        <div>
           <div className="timeline-wrap">
             <div className="timeline-heading">
               <span>EDUCATION</span>
