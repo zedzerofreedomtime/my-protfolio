@@ -52,17 +52,23 @@ const projects = [
   },
   {
     name: "InvoiceMini",
-    subtitle: "ระบบจัดการใบแจ้งหนี้ขนาดเล็ก",
-    category: "Frontend",
-    tags: ["Frontend", "Dashboard"],
-    desc: "เว็บแอปสำหรับจัดการข้อมูลใบแจ้งหนี้และสรุปรายการสำคัญ ช่วยให้ผู้ใช้สร้าง ตรวจสอบ และติดตามเอกสารได้เป็นระบบมากขึ้น",
+    subtitle: "ระบบจัดการเอกสารธุรกิจและใบแจ้งหนี้แบบ Full-Stack",
+    category: "Full-Stack",
+    tags: ["Frontend", "Backend", "Dashboard"],
+    desc: "ระบบจัดการลูกค้า สินค้า ใบเสนอราคา ใบแจ้งหนี้ ใบเสร็จ และข้อมูลธุรกิจ โดยมี Dashboard สรุปรายได้ เอกสารล่าสุด และใบแจ้งหนี้เกินกำหนด พร้อม API ที่จัดเก็บข้อมูลจริงและรองรับการสร้าง PDF",
     highlights: [
-      "หน้าจัดการข้อมูลใบแจ้งหนี้พร้อมโครงสร้างที่อ่านง่าย",
-      "Dashboard สำหรับดูสถานะและข้อมูลสรุปของเอกสาร",
-      "Responsive UI รองรับการใช้งานบนหลายขนาดหน้าจอ",
+      "Next.js App Router พร้อมหน้า Dashboard, Customers, Products, Quotations, Invoices, Receipts และ Settings",
+      "Go + Gin API สำหรับ auth, CRUD ลูกค้า/สินค้า, เอกสารธุรกิจ, สถานะเอกสาร และ business settings",
+      "PostgreSQL สำหรับจัดเก็บข้อมูล พร้อม migration และ seed demo data ตอนเริ่มระบบ",
+      "Redis cache สำหรับ dashboard summary และ invalidate หลังมีการแก้ไขข้อมูลสำคัญ",
+      "JWT Authentication และ route protection สำหรับหน้าหลังบ้าน",
+      "รองรับการแปลงใบเสนอราคาเป็นใบแจ้งหนี้ ชำระ invoice และเปิด PDF ของ quotation, invoice, receipt",
     ],
-    tech: ["React", "Vite", "JavaScript", "Tailwind CSS"],
-    githubLink: "https://github.com/zedzerofreedomtime/InvoiceMini-fn",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Go", "Gin", "PostgreSQL", "Redis", "JWT", "Docker"],
+    githubLinks: [
+      { label: "Frontend", href: "https://github.com/zedzerofreedomtime/InvoiceMini-fn" },
+      { label: "Backend", href: "https://github.com/zedzerofreedomtime/InvoiceMini-bn" },
+    ],
   },
   {
     name: "PC Shop",
@@ -208,16 +214,19 @@ export default function Projects() {
                   </a>
                 ) : null}
 
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="project-action project-action--github"
-                  aria-label={`เข้าชมบน GitHub ${project.name}`}
-                >
-                  <IconGitHub />
-                  <span>เข้าชมบน GitHub</span>
-                </a>
+                {(project.githubLinks ?? [{ label: "GitHub", href: project.githubLink }]).map((githubLink) => (
+                  <a
+                    key={githubLink.href}
+                    href={githubLink.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="project-action project-action--github"
+                    aria-label={`เข้าชม ${githubLink.label} ของ ${project.name} บน GitHub`}
+                  >
+                    <IconGitHub />
+                    <span>{githubLink.label}</span>
+                  </a>
+                ))}
               </div>
             </article>
           ))}
