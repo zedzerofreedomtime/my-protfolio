@@ -26,10 +26,10 @@ const projects = [
     githubLink: "https://github.com/zedzerofreedomtime/InvoiceMini-fn",
     workflow: ["Customer", "Product", "Quotation", "Invoice", "Receipt", "PDF"],
     tech: ["Next.js", "React", "TypeScript", "Go", "Gin", "PostgreSQL", "JWT"],
-    screensTitle: "Dashboard Mockup",
+    screensTitle: "Real Dashboard Screen",
     screensCopy:
-      "ออกแบบ mockup จาก feature จริงของ InvoiceMini เพื่อให้เห็นภาพระบบเอกสารธุรกิจและ flow การแปลงใบเสนอราคาเป็น invoice",
-    mockup: "invoice",
+      "ภาพจริงจากหน้า Dashboard ของ InvoiceMini แสดงยอดรายได้ เอกสารล่าสุด กราฟรายเดือน และเมนูจัดการเอกสารธุรกิจ",
+    image: "/project-invoicemini-real.png",
   },
   {
     name: "Ecosystem Manager",
@@ -41,10 +41,10 @@ const projects = [
     githubLink: "https://github.com/fulltank-garage/shadow-ceo",
     workflow: ["Connect Page", "Collect Data", "AI Summary", "Growth Brief", "LINE Notify", "Admin Logs"],
     tech: ["React", "Vite", "Go", "Gin", "PostgreSQL", "Redis", "Gemini API", "LINE API"],
-    screensTitle: "Analytics Mockup",
+    screensTitle: "Real Analytics Screen",
     screensCopy:
-      "ภาพจำลองจากโครงสร้างระบบจริง แสดง dashboard วิเคราะห์เพจ สถานะ service และ AI growth brief สำหรับเจ้าของธุรกิจ",
-    mockup: "ai",
+      "ภาพจริงจากหน้า Dashboard ของ Ecosystem Manager แสดง performance summary, KPI, inbox signal และ daily growth brief",
+    image: "/project-ecosystem-real.png",
   },
   {
     name: "AutoNexus",
@@ -56,10 +56,10 @@ const projects = [
     githubLink: "https://github.com/zedzerofreedomtime/ZedSellAuto",
     workflow: ["Browse Cars", "Compare", "Vehicle Detail", "Favorites", "Test Drive", "Loan Request"],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Go", "Gin", "PostgreSQL", "Redis"],
-    screensTitle: "Marketplace Mockup",
+    screensTitle: "Real Marketplace Screen",
     screensCopy:
-      "ภาพจำลองจาก flow จริงของ AutoNexus แสดงหน้าค้นหารถ การ์ดรายการ และสถานะ request สำหรับผู้ซื้อ",
-    mockup: "auto",
+      "ภาพจริงจากหน้า marketplace ของ AutoNexus แสดงหมวดหมู่รถ ตัวกรอง และรายการรถพร้อมรูปจากระบบ",
+    image: "/project-autonexus-real.png",
   },
   {
     name: "Safezone Town Website",
@@ -72,10 +72,10 @@ const projects = [
     link: "https://safezoneee.netlify.app/",
     workflow: ["Home", "Rules", "Jobs", "Menu", "Responsive", "Deploy"],
     tech: ["HTML", "CSS", "JavaScript", "PHP"],
-    screensTitle: "Website Mockup",
+    screensTitle: "Real Website Screen",
     screensCopy:
-      "ภาพจำลองจากเว็บ roleplay ของนาย เน้นเมนูข้อมูลเมืองและ responsive layout สำหรับผู้ใช้งานจริง",
-    mockup: "town",
+      "ภาพจริงจากหน้าเว็บไซต์ Safezone Town แสดงโทนสี เมนูหลัก และเนื้อหากฎของเมืองจากไฟล์โปรเจคจริง",
+    image: "/project-safezone-real.png",
   },
   {
     name: "Saber Town Website",
@@ -88,10 +88,10 @@ const projects = [
     link: "https://saber-town.netlify.app/",
     workflow: ["Landing", "Info", "Rules", "Navigation", "Mobile", "Netlify"],
     tech: ["HTML", "CSS", "JavaScript", "PHP"],
-    screensTitle: "Website Mockup",
+    screensTitle: "Real Website Screen",
     screensCopy:
-      "ภาพจำลองจากข้อมูลโปรเจค Saber Town แสดงโครงสร้างหน้าเว็บข้อมูลและ visual style สำหรับ community website",
-    mockup: "town",
+      "ภาพจริงจากหน้าเว็บไซต์ Saber Town แสดงหน้าแรก โลโก้ เมนู และสไตล์ neon community ของโปรเจคจริง",
+    image: "/project-saber-real.png",
   },
 ];
 
