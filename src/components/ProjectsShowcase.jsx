@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import SectionHeading from "./SectionHeading";
 
 const projects = [
@@ -158,6 +159,25 @@ function IconGitHub(props) {
 }
 
 export default function ProjectsShowcase() {
+  const [activeImage, setActiveImage] = useState(null);
+
+  useEffect(() => {
+    if (!activeImage) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setActiveImage(null);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeImage]);
+
   return (
     <section id="projects" className="portfolio-section projects-showcase-section">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
@@ -215,34 +235,48 @@ export default function ProjectsShowcase() {
                   <h4>{project.screensTitle}</h4>
                   <span>{project.screensCopy}</span>
                 </div>
-                <ProjectPreview project={project} />
+                <ProjectPreview project={project} onOpenImage={setActiveImage} />
               </div>
             </article>
           ))}
         </div>
       </div>
+
+      {activeImage ? (
+        <ProjectLightbox image={activeImage} onClose={() => setActiveImage(null)} />
+      ) : null}
     </section>
   );
 }
 
-function ProjectPreview({ project }) {
+function ProjectPreview({ project, onOpenImage }) {
   const images = project.images ?? (project.image ? [project.image] : []);
 
   if (images.length > 0) {
     return (
       <div className="project-shot project-shot--gallery">
         {images.map((image, imageIndex) => (
-          <figure
+          <button
+            type="button"
             key={image}
             className={
               imageIndex === 0
                 ? "project-gallery__item project-gallery__item--hero"
                 : "project-gallery__item"
             }
+            onClick={() =>
+              onOpenImage({
+                src: image,
+                title: project.name,
+                label: `${project.name} screen ${imageIndex + 1}`,
+                index: imageIndex + 1,
+              })
+            }
+            aria-label={`Open ${project.name} screen ${imageIndex + 1}`}
           >
             <img src={image} alt={`${project.name} screen ${imageIndex + 1}`} loading="lazy" />
-            <figcaption>{String(imageIndex + 1).padStart(2, "0")}</figcaption>
-          </figure>
+            <span className="project-gallery__number">{String(imageIndex + 1).padStart(2, "0")}</span>
+          </button>
         ))}
       </div>
     );
@@ -337,6 +371,22 @@ function ProjectPreview({ project }) {
           <span />
           <span />
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectLightbox({ image, onClose }) {
+  return (
+    <div className="project-lightbox" role="dialog" aria-modal="true" aria-label={image.label}>
+      <button type="button" className="project-lightbox__backdrop" onClick={onClose} aria-label="Close preview" />
+      <div className="project-lightbox__frame">
+        <button type="button" className="project-lightbox__close" onClick={onClose} aria-label="Close preview">
+          <span />
+          <span />
+        </button>
+        <img src={image.src} alt={image.label} />
+        <p>{image.title}</p>
       </div>
     </div>
   );
