@@ -65,10 +65,7 @@ const projects = [
       "รองรับการแปลงใบเสนอราคาเป็นใบแจ้งหนี้ ชำระ invoice และเปิด PDF ของ quotation, invoice, receipt",
     ],
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Go", "Gin", "PostgreSQL", "Redis", "JWT", "Docker"],
-    githubLinks: [
-      { label: "Frontend", href: "https://github.com/zedzerofreedomtime/InvoiceMini-fn" },
-      { label: "Backend", href: "https://github.com/zedzerofreedomtime/InvoiceMini-bn" },
-    ],
+    githubLink: "https://github.com/zedzerofreedomtime/InvoiceMini-fn",
   },
   {
     name: "PC Shop",
