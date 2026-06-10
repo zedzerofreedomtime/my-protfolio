@@ -2,22 +2,22 @@ import SectionHeading from "./SectionHeading";
 
 const education = [
   {
-    level: "Bachelor Degree",
+    level: "ปริญญาตรี",
     school: "มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ ศูนย์สุพรรณบุรี",
-    detail: "กำลังศึกษาระดับปริญญาตรี และพัฒนาทักษะด้าน Front-End, Back-End, Database และการออกแบบระบบเว็บแอปพลิเคชัน",
-    period: "Present",
+    detail: "คณะวิทยาศาสตร์และเทคโนโลยี สาขาเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล",
+    period: "2024 - ปัจจุบัน",
   },
   {
-    level: "Development Direction",
-    school: "Full-Stack Developer Path",
-    detail: "ฝึกสร้างระบบที่ครบทั้งหน้าเว็บ API ฐานข้อมูล Authentication Integration และ Monitoring เพื่อให้พร้อมต่อการทำงานจริง",
-    period: "Ongoing",
+    level: "ประกาศนียบัตรวิชาชีพชั้นสูง",
+    school: "วิทยาลัยเทคนิคสุพรรณบุรี",
+    detail: "สาขาคอมพิวเตอร์กราฟิก",
+    period: "2022 - 2024",
   },
   {
-    level: "Project Experience",
-    school: "Shadow CEO / AutoNexus / Web Portfolio",
-    detail: "มีประสบการณ์ทำโครงงานเว็บแดชบอร์ด ระบบซื้อขายรถยนต์ออนไลน์ และเว็บไซต์ที่เน้น Responsive UI",
-    period: "2024 - 2026",
+    level: "ประกาศนียบัตรวิชาชีพ",
+    school: "วิทยาลัยเทคนิคสุพรรณบุรี",
+    detail: "สาขาเทคนิคคอมพิวเตอร์",
+    period: "2019 - 2022",
   },
 ];
 
@@ -25,10 +25,9 @@ export default function About() {
   return (
     <section id="about" className="portfolio-section">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
-        <SectionHeading label="01" title="PROFILE">
-          ผมเป็นนักศึกษาที่สนใจการพัฒนาเว็บไซต์และเว็บแอปพลิเคชันแบบ Full-Stack
-          ตั้งแต่การออกแบบ UX/UI ให้เข้าใจง่าย ไปจนถึงการวางระบบ Back-End
-          ที่ดูแลต่อได้และเชื่อมต่อบริการจริงได้ครบถ้วน
+        <SectionHeading label="01" title="EDUCATION">
+          ประวัติการศึกษาของผม ตั้งแต่สายเทคนิคคอมพิวเตอร์และคอมพิวเตอร์กราฟิก
+          จนถึงปัจจุบันที่กำลังศึกษาด้านเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล
         </SectionHeading>
 
         <div className="space-y-10">
@@ -52,7 +51,7 @@ export default function About() {
 
           <div className="timeline-wrap">
             <div className="timeline-heading">
-              <span>EDUCATION / EXPERIENCE</span>
+              <span>EDUCATION</span>
               <span>03 records</span>
             </div>
 
