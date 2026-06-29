@@ -68,6 +68,28 @@ const projects = [
     ],
   },
   {
+    name: "Intervue AI",
+    type: "AI Interview Simulator",
+    summary:
+      "ระบบจำลองการสัมภาษณ์งานและผู้ช่วยพัฒนาอาชีพด้วย AI สำหรับวิเคราะห์เรซูเม่ สร้างคำถามสัมภาษณ์ ประเมินคำตอบ และแนะนำ roadmap การพัฒนาทักษะ",
+    accent: "#635bff",
+    icon: "AI",
+    githubLink: "https://github.com/zedzerofreedomtime/AI-Interview-Simulator",
+    workflow: ["Resume Upload", "AI Profile", "Mock Interview", "Answer Scoring", "Reports", "Career Roadmap"],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Go", "Gin", "PostgreSQL", "Redis", "Gemini API"],
+    screensTitle: "Real Career Coach Screens",
+    screensCopy:
+      "ภาพจริงจากโปรเจค Intervue AI แสดง dashboard ความพร้อมสัมภาษณ์ หน้าจำลองสัมภาษณ์ วิเคราะห์ resume รายงานผล และ career roadmap",
+    image: "/project-intervue-01.png",
+    images: [
+      "/project-intervue-01.png",
+      "/project-intervue-02.png",
+      "/project-intervue-03.png",
+      "/project-intervue-04.png",
+      "/project-intervue-05.png",
+    ],
+  },
+  {
     name: "AutoNexus",
     type: "Car Marketplace",
     summary:
