@@ -3,8 +3,31 @@ import SectionHeading from "./SectionHeading";
 
 const projects = [
   {
+    name: "Intervue AI",
+    type: "AI Interview Simulator",
+    summary:
+      "ระบบจำลองการสัมภาษณ์งานและผู้ช่วยพัฒนาอาชีพด้วย AI สำหรับวิเคราะห์เรซูเม่ สร้างคำถามสัมภาษณ์ ประเมินคำตอบ และแนะนำ roadmap การพัฒนาทักษะ",
+    accent: "#635bff",
+    icon: "AI",
+    badges: ["AI Project"],
+    githubLink: "https://github.com/zedzerofreedomtime/AI-Interview-Simulator",
+    workflow: ["Resume Upload", "AI Profile", "Mock Interview", "Answer Scoring", "Reports", "Career Roadmap"],
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Go", "Gin", "PostgreSQL", "Redis", "Gemini API"],
+    screensTitle: "Real Career Coach Screens",
+    screensCopy:
+      "ภาพจริงจากโปรเจค Intervue AI แสดง dashboard ความพร้อมสัมภาษณ์ หน้าจำลองสัมภาษณ์ วิเคราะห์ resume รายงานผล และ career roadmap",
+    image: "/project-intervue-01.png",
+    images: [
+      "/project-intervue-01.png",
+      "/project-intervue-02.png",
+      "/project-intervue-03.png",
+      "/project-intervue-04.png",
+      "/project-intervue-05.png",
+    ],
+  },
+  {
     name: "PC Shop",
-    type: "E-commerce System",
+    type: "PC Builder E-commerce System",
     summary:
       "ระบบร้านค้าออนไลน์สำหรับสินค้า PC พร้อม catalog, product detail, cart, checkout, order tracking และ PC Builder",
     accent: "#0b7cff",
@@ -47,12 +70,34 @@ const projects = [
     ],
   },
   {
+    name: "Orderly",
+    type: "Facebook Order Management System (In Development)",
+    summary:
+      "ระบบรับออเดอร์สำหรับร้านค้าที่ขายผ่าน Facebook Page ช่วยสร้างสินค้า แชร์ลิงก์ใต้โพสต์ รับสลิป บันทึกคำสั่งซื้อ และแจ้งเตือนร้านผ่าน LINE Official Account",
+    accent: "#34c759",
+    icon: "OR",
+    badges: ["In Development"],
+    githubLink: "https://github.com/zedzerofreedomtime/Orderly",
+    workflow: ["Create Product", "Share Link", "Customer Checkout", "Upload Slip", "LINE Notify", "Track Parcel"],
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "LINE API", "Cloudinary"],
+    screensTitle: "In Development Screens",
+    screensCopy:
+      "ภาพจากโปรเจค Orderly ที่กำลังพัฒนา แสดงหน้า landing ของระบบและ concept สำหรับ flow ร้าน Facebook รับออเดอร์พร้อมแจ้งเตือนผ่าน LINE",
+    image: "/project-orderly-01.png",
+    images: [
+      "/project-orderly-01.png",
+      "/project-orderly-02.png",
+      "/project-orderly-03.png",
+    ],
+  },
+  {
     name: "Ecosystem Manager",
     type: "AI Growth Dashboard",
     summary:
       "ผู้ช่วยวิเคราะห์ข้อมูลธุรกิจ SME จาก Facebook Page พร้อมสรุป insight, daily brief และคำแนะนำด้วย AI",
     accent: "#ff8c00",
     icon: "AI",
+    badges: ["AI Project"],
     githubLink: "https://github.com/fulltank-garage/shadow-ceo",
     workflow: ["Connect Page", "Collect Data", "AI Summary", "Growth Brief", "LINE Notify", "Admin Logs"],
     tech: ["React", "Vite", "Go", "Gin", "PostgreSQL", "Redis", "Gemini API", "LINE API"],
@@ -65,28 +110,6 @@ const projects = [
       "/project-ecosystem-02.png",
       "/project-ecosystem-03.png",
       "/project-ecosystem-04.png",
-    ],
-  },
-  {
-    name: "Intervue AI",
-    type: "AI Interview Simulator",
-    summary:
-      "ระบบจำลองการสัมภาษณ์งานและผู้ช่วยพัฒนาอาชีพด้วย AI สำหรับวิเคราะห์เรซูเม่ สร้างคำถามสัมภาษณ์ ประเมินคำตอบ และแนะนำ roadmap การพัฒนาทักษะ",
-    accent: "#635bff",
-    icon: "AI",
-    githubLink: "https://github.com/zedzerofreedomtime/AI-Interview-Simulator",
-    workflow: ["Resume Upload", "AI Profile", "Mock Interview", "Answer Scoring", "Reports", "Career Roadmap"],
-    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query", "Go", "Gin", "PostgreSQL", "Redis", "Gemini API"],
-    screensTitle: "Real Career Coach Screens",
-    screensCopy:
-      "ภาพจริงจากโปรเจค Intervue AI แสดง dashboard ความพร้อมสัมภาษณ์ หน้าจำลองสัมภาษณ์ วิเคราะห์ resume รายงานผล และ career roadmap",
-    image: "/project-intervue-01.png",
-    images: [
-      "/project-intervue-01.png",
-      "/project-intervue-02.png",
-      "/project-intervue-03.png",
-      "/project-intervue-04.png",
-      "/project-intervue-05.png",
     ],
   },
   {
@@ -217,6 +240,14 @@ export default function ProjectsShowcase() {
                     <p>{project.type}</p>
                   </div>
                 </div>
+
+                {project.badges?.length ? (
+                  <div className="project-case__badges" aria-label={`${project.name} highlights`}>
+                    {project.badges.map((badge) => (
+                      <span key={badge}>{badge}</span>
+                    ))}
+                  </div>
+                ) : null}
 
                 <p className="project-case__copy">{project.summary}</p>
 

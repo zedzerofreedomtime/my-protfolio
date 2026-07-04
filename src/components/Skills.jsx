@@ -2,25 +2,30 @@ import SectionHeading from "./SectionHeading";
 
 const deviconBase = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
+const mainStack = [
+  { name: "React", icon: `${deviconBase}/react/react-original.svg` },
+  { name: "Next.js", icon: `${deviconBase}/nextjs/nextjs-original.svg`, invert: true },
+  { name: "TypeScript", icon: `${deviconBase}/typescript/typescript-original.svg` },
+  { name: "Go", icon: `${deviconBase}/go/go-original-wordmark.svg`, wide: true },
+  { name: "PostgreSQL", icon: `${deviconBase}/postgresql/postgresql-original.svg` },
+  { name: "Docker", icon: `${deviconBase}/docker/docker-original.svg` },
+];
+
 const skillGroups = [
   {
-    title: "Front-End",
+    title: "Also Used - Front-End",
     skills: [
       { name: "HTML5", icon: `${deviconBase}/html5/html5-original.svg` },
       { name: "CSS3", icon: `${deviconBase}/css3/css3-original.svg` },
       { name: "JavaScript", icon: `${deviconBase}/javascript/javascript-original.svg` },
-      { name: "TypeScript", icon: `${deviconBase}/typescript/typescript-original.svg` },
-      { name: "React.js", icon: `${deviconBase}/react/react-original.svg` },
-      { name: "Next.js", icon: `${deviconBase}/nextjs/nextjs-original.svg`, invert: true },
       { name: "Vite", icon: `${deviconBase}/vitejs/vitejs-original.svg` },
       { name: "Tailwind CSS", icon: `${deviconBase}/tailwindcss/tailwindcss-original.svg` },
       { name: "Angular", icon: `${deviconBase}/angularjs/angularjs-original.svg` },
     ],
   },
   {
-    title: "Back-End",
+    title: "Also Used - Back-End",
     skills: [
-      { name: "Golang", icon: `${deviconBase}/go/go-original-wordmark.svg`, wide: true },
       { name: "PHP", icon: `${deviconBase}/php/php-original.svg`, wide: true },
       { name: "JWT Authentication", label: "JWT" },
       { name: "LUA", icon: `${deviconBase}/lua/lua-original.svg` },
@@ -28,10 +33,9 @@ const skillGroups = [
     ],
   },
   {
-    title: "Database",
+    title: "Also Used - Database",
     skills: [
       { name: "MySQL", icon: `${deviconBase}/mysql/mysql-original-wordmark.svg`, wide: true },
-      { name: "PostgreSQL", icon: `${deviconBase}/postgresql/postgresql-original.svg` },
       { name: "Redis", icon: `${deviconBase}/redis/redis-original.svg` },
     ],
   },
@@ -53,9 +57,35 @@ export default function Skills() {
     <section id="skills" className="portfolio-section portfolio-section--compact">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading label="02" title="SKILLS">
-          เทคโนโลยีและเครื่องมือที่ผมใช้ในการพัฒนาเว็บแอปพลิเคชัน ครอบคลุมตั้งแต่ Front-End, Back-End,
-          Database ไปจนถึงเครื่องมือสำหรับพัฒนาและดูแลระบบให้พร้อมใช้งานจริง
+          แกนหลักที่ผมใช้ทำงานจริงคือ React, Next.js, TypeScript, Go, PostgreSQL และ Docker
+          ส่วนเทคโนโลยีอื่น ๆ เป็นเครื่องมือที่เคยใช้ในโปรเจคและสามารถหยิบมาใช้งานได้ตามโจทย์
         </SectionHeading>
+
+        <article className="main-stack-panel mt-12">
+          <div>
+            <p className="main-stack-panel__eyebrow">Main Stack</p>
+            <h3>ถนัดจริงและใช้เป็นแกนหลัก</h3>
+          </div>
+          <div className="main-stack-grid">
+            {mainStack.map((skill) => (
+              <div key={skill.name} className="skill-icon skill-icon--main" title={skill.name} aria-label={skill.name}>
+                <img
+                  className={[
+                    "skill-icon__image",
+                    skill.invert ? "skill-icon__image--invert" : "",
+                    skill.wide ? "skill-icon__image--wide" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  src={skill.icon}
+                  alt=""
+                  loading="lazy"
+                />
+                <span className="skill-icon__name">{skill.name}</span>
+              </div>
+            ))}
+          </div>
+        </article>
 
         <div className="skills-board mt-12">
           {skillGroups.map((group) => (

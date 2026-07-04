@@ -438,6 +438,40 @@ body::before {
   gap: clamp(2.2rem, 5vw, 4rem);
 }
 
+.main-stack-panel {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.28fr) 1fr;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  align-items: center;
+  border: 1px solid rgba(255, 140, 0, 0.28);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.11), rgba(255, 255, 255, 0.035));
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.main-stack-panel__eyebrow {
+  margin-bottom: 0.55rem;
+  color: var(--orange);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.main-stack-panel h3 {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.25rem, 2.6vw, 2rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.main-stack-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.8rem, 1.7vw, 1.1rem);
+  align-items: center;
+}
+
 .skill-group {
   border-top: 1px solid var(--line);
   padding-top: clamp(1.35rem, 3vw, 2rem);
@@ -474,6 +508,12 @@ body::before {
   transform: translateY(-5px);
   border-color: rgba(255, 140, 0, 0.5);
   background: rgba(255, 140, 0, 0.07);
+}
+
+.skill-icon--main {
+  width: clamp(72px, 9vw, 98px);
+  border-color: rgba(255, 140, 0, 0.24);
+  background: rgba(0, 0, 0, 0.34);
 }
 
 .skill-icon__image {
@@ -702,6 +742,25 @@ body::before {
   color: rgba(255, 255, 255, 0.52);
   font-size: 0.78rem;
   font-weight: 700;
+}
+
+.project-case__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.project-case__badges span {
+  border: 1px solid color-mix(in srgb, var(--case-accent) 55%, rgba(255, 255, 255, 0.18));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--case-accent) 18%, rgba(0, 0, 0, 0.4));
+  padding: 0.42rem 0.72rem;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .project-case__copy {
@@ -1329,6 +1388,10 @@ body::before {
 
   .project-actions {
     width: min(100%, 360px);
+  }
+
+  .main-stack-panel {
+    grid-template-columns: 1fr;
   }
 
   .project-case {
