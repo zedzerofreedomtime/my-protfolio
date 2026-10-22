@@ -5,19 +5,17 @@ import ProjectsShowcase from "./components/ProjectsShowcase";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import Starfield from "./components/Starfield";
+import "./editorial.css";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-f1-bg text-f1-text">
-      <Starfield />
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_80%_10%,rgba(116,18,28,0.22),transparent_30%),linear-gradient(180deg,rgba(0,0,0,0.12),#030303_88%)]" />
+    <div className="editorial-site relative min-h-screen text-f1-text">
       <Navbar />
       <main className="relative z-10">
         <Hero />
+        <ProjectsShowcase />
         <About />
         <Skills />
-        <ProjectsShowcase />
         <Contact />
       </main>
       <Footer />

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const projects = [
@@ -37,7 +38,7 @@ const projects = [
     tech: ["Angular", "TypeScript", "ASP.NET Core", "PostgreSQL", "Redis", "Docker"],
     screensTitle: "Product Screens",
     screensCopy:
-      "รูปหน้าจอจริงจากโปรเจค PC Shop ใน repository ของนาย แสดง flow หน้าร้าน สินค้า ตะกร้า checkout และการติดตามคำสั่งซื้อ",
+      "หน้าจอจาก PC Shop แสดงขั้นตอนเลือกสินค้า ตะกร้า checkout และการติดตามคำสั่งซื้อ",
     image: "/project-pcshop-storefront.png",
     images: [
       "/project-pcshop-01.png",
@@ -103,7 +104,7 @@ const projects = [
     tech: ["React", "Vite", "Go", "Gin", "PostgreSQL", "Redis", "Gemini API", "LINE API"],
     screensTitle: "Real Analytics Screen",
     screensCopy:
-      "ภาพจริงจากหน้า Dashboard ของ Ecosystem Manager แสดง performance summary, KPI, inbox signal และ daily growth brief",
+      "หน้าจอ LINE Official Account และตัวอย่างบทสนทนากับผู้ช่วย AI สำหรับวิเคราะห์ธุรกิจและแนะนำแนวทางการตลาด",
     image: "/project-ecosystem-real.png",
     images: [
       "/project-ecosystem-01.png",
@@ -225,13 +226,18 @@ export default function ProjectsShowcase() {
   return (
     <section id="projects" className="portfolio-section projects-showcase-section">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading label="03" title="Selected systems built for real business workflows">
+        <SectionHeading label="SELECTED WORK / 08" title="Ideas into systems.">
           รวมโปรเจคที่ออกแบบให้ใช้งานจริง ตั้งแต่ระบบร้านค้าออนไลน์ ระบบเอกสารธุรกิจ dashboard วิเคราะห์ข้อมูล ไปจนถึงเว็บไซต์ community
         </SectionHeading>
 
         <div className="project-case-grid mt-10">
           {projects.map((project, index) => (
-            <article key={project.name} className="project-case" style={{ "--case-accent": project.accent }}>
+            <article id={`project-${index + 1}`} key={project.name} className="project-case" style={{ "--case-accent": project.accent }}>
+              <button className="case-cover" type="button" onClick={() => setActiveImage({ src: project.images[0], title: project.name, label: `${project.name} screen 1` })} aria-label={`Open ${project.name} cover`}>
+                <img src={project.images[0]} alt={`${project.name} overview`} loading="lazy" />
+                <span className="case-cover__index">{String(index + 1).padStart(2, "0")}</span>
+                <span className="case-cover__open"><ArrowUpRight size={24} /></span>
+              </button>
               <div className="project-case__summary">
                 <div className="project-case__identity">
                   <div className="project-case__mark">{project.icon}</div>
@@ -271,6 +277,8 @@ export default function ProjectsShowcase() {
                 </div>
               </div>
 
+              <details className="case-details">
+              <summary>Explore project <Plus size={20} /></summary>
               <div className="project-case__workflow">
                 <p>System Workflow</p>
                 {project.workflow.map((step, stepIndex) => (
@@ -289,6 +297,7 @@ export default function ProjectsShowcase() {
                 </div>
                 <ProjectPreview project={project} onOpenImage={setActiveImage} />
               </div>
+              </details>
             </article>
           ))}
         </div>
@@ -429,11 +438,24 @@ function ProjectPreview({ project, onOpenImage }) {
 }
 
 function ProjectLightbox({ image, onClose }) {
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    const trigger = document.activeElement;
+    closeRef.current?.focus();
+    return () => trigger?.focus();
+  }, []);
+
   return (
-    <div className="project-lightbox" role="dialog" aria-modal="true" aria-label={image.label}>
-      <button type="button" className="project-lightbox__backdrop" onClick={onClose} aria-label="Close preview" />
+    <div className="project-lightbox" role="dialog" aria-modal="true" aria-label={image.label} onKeyDown={(event) => {
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeRef.current?.focus();
+      }
+    }}>
+      <div className="project-lightbox__backdrop" onClick={onClose} aria-hidden="true" />
       <div className="project-lightbox__frame">
-        <button type="button" className="project-lightbox__close" onClick={onClose} aria-label="Close preview">
+        <button ref={closeRef} type="button" className="project-lightbox__close" onClick={onClose} aria-label="Close preview">
           <span />
           <span />
         </button>
