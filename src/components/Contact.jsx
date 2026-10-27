@@ -22,7 +22,7 @@ export default function Contact() {
     <section id="contact" className="portfolio-section portfolio-section--contact">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr]">
         <SectionHeading label="04" title="CONTACT">
-          พร้อมพูดคุยเรื่องฝึกงาน โครงงาน Full-Stack หรือโอกาสพัฒนาเว็บไซต์และเว็บแอปพลิเคชัน
+          พร้อมพูดคุยเรื่องโอกาสร่วมงานในตำแหน่ง Full-Stack Developer และการพัฒนาเว็บไซต์และเว็บแอปพลิเคชัน
           สามารถติดต่อผมได้ผ่านช่องทางด้านล่าง
         </SectionHeading>
 

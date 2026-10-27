@@ -5,7 +5,10 @@ export default function Hero() {
     <section id="home" className="editorial-hero">
       <div className="editorial-hero__intro">
         <p className="editorial-eyebrow">FULL-STACK DEVELOPER / THAILAND</p>
-        <h1>Methasit<span>Sangwaree<span className="name-dot">.</span></span></h1>
+        <div className="editorial-hero__identity">
+          <img className="hero-profile" src="/profile-methasit-student.png" alt="เมธาสิทธิ์ สังข์วารี" width="240" height="308" fetchPriority="high" />
+          <h1>Methasit<span>Sangwaree<span className="name-dot">.</span></span></h1>
+        </div>
         <div className="editorial-hero__bottom">
           <p>ออกแบบประสบการณ์ที่ใช้ง่าย<br />พัฒนาระบบที่ทำงานได้จริง</p>
           <div className="hero-links">

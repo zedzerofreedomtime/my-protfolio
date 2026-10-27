@@ -5,7 +5,7 @@ const education = [
     level: "ปริญญาตรี",
     school: "มหาวิทยาลัยเทคโนโลยีราชมงคลสุวรรณภูมิ ศูนย์สุพรรณบุรี",
     detail: "คณะวิทยาศาสตร์และเทคโนโลยี สาขาเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล",
-    period: "2024 - ปัจจุบัน",
+    period: "สำเร็จการศึกษาแล้ว",
   },
   {
     level: "ประกาศนียบัตรวิชาชีพชั้นสูง",
@@ -26,10 +26,9 @@ export default function About() {
     <section id="about" className="portfolio-section">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
-        <img className="profile-editorial" src="/profile-methasit-student.png" alt="เมธาสิทธิ์ สังข์วารี" loading="lazy" />
         <SectionHeading label="THE PERSON BEHIND THE WORK" title="Education.">
           ประวัติการศึกษาของผม ตั้งแต่สายเทคนิคคอมพิวเตอร์และเทคโนโลยีคอมพิวเตอร์
-          จนถึงปัจจุบันที่กำลังศึกษาด้านเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล
+          จนสำเร็จการศึกษาระดับปริญญาตรีด้านเทคโนโลยีสารสนเทศและเศรษฐกิจดิจิทัล
         </SectionHeading>
         </div>
 
